@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  height: 100vh;
+  background: #333;
+}
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 15;
+  animation: fadeout 2s linear forwards;
+}
+.loader h2 {
+  color: #fff;
+}
+.loader .bar {
+  position: relative;
+  width: 400px;
+  height: 40px;
+  background: transparent;
+  border: 2px solid #fff;
+  margin: 0 20px;
+}
+.loader .bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #3800dc;
+  transform-origin: left;
+  animation: animate 1s linear forwards;
+}
+.loader .bar:after {
+  content: "Loading...";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.5rem;
+  mix-blend-mode: difference;
+}
+@keyframes fadeout {
+  0%,
+  91% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.center {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+}
+.center div {
+  position: relative;
+  height: 100px;
+  z-index: 2;
+  margin: -30px 0;
+  transform: skewY(-5deg);
+  display: grid;
+  place-items: center;
+}
+.center div:nth-child(2),
+.center div:nth-child(4) {
+  transform: skewY(14.5deg);
+
+  z-index: 1;
+}
+.center div:nth-child(4) {
+  transform: skewY(25deg);
+  transform-origin: left;
+  top: -52px;
+}
+
+.center div::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.center div:nth-child(1)::before,
+.center div:nth-child(3)::before {
+  background: linear-gradient(-160deg, #ff0058, #673abc);
+  transform: scaleX(0);
+}
+.center div:nth-child(2)::before,
+.center div:nth-child(4)::before {
+  background: linear-gradient(-20deg, #ff0058, #3800dc);
+  transform: scaleX(0);
+}
+.center div:nth-child(1)::before {
+  animation: animate 1s linear forwards;
+  transform-origin: right;
+  animation-delay: 3s;
+}
+.center div:nth-child(2)::before {
+  animation: animate 1s linear forwards;
+  transform-origin: left;
+  animation-delay: 4s;
+}
+.center div:nth-child(3)::before {
+  animation: animate 1s linear forwards;
+  transform-origin: right;
+  animation-delay: 5s;
+}
+.center div:nth-child(4)::before {
+  animation: animate 1s linear forwards;
+  transform-origin: left;
+  animation-delay: 6s;
+  width: 60%;
+  left: 0;
+}
+@keyframes animate {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+.center div:nth-child(1)::after,
+.center div:nth-child(3)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scaleX(0);
+}
+.center div:nth-child(1)::after {
+  animation: animate 1s linear forwards;
+  transform-origin: right;
+  animation-delay: 3s;
+}
+.center div:nth-child(3)::after {
+  animation: animate 1s linear forwards;
+  transform-origin: right;
+  animation-delay: 5s;
+}
+.center div h2 {
+  position: relative;
+  z-index: 10;
+  opacity: 0;
+  color: #fff;
+}
+.center div:nth-child(1) h2 {
+  animation: text 0.5s linear forwards;
+  font-size: 2.7rem;
+  text-align: center;
+  animation-delay: 5s;
+}
+.center div:nth-child(3) h2 {
+  animation: text 0.5s linear forwards;
+  animation-delay: 6s;
+  font-size: 4rem;
+}
+@keyframes text {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
